@@ -118,27 +118,31 @@
     }
  
     function enviarReservas() {
-        // Obtém os valores dos campos
+      const token = localStorage.getItem('token')  
+
         var pista = document.getElementById("pista").value;
         var front = document.getElementById("front").value;
         //var camarote = document.getElementById("camarote").value;
 
         // Cria um objeto com os valores
         var reservas = {
-            ingressos: [
-                { id: "13", quantidade: parseInt(pista) },
-                { id: "12", quantidade: parseInt(front) },
-                //{ id: "id_do_camarote", quantidade: parseInt(camarote) },
+            ingresso: [
+                { id: "14", quantidade: parseInt(pista) },
+              //  { id: "12", quantidade: parseInt(front) },
+              //{ id: "id_do_camarote", quantidade: parseInt(camarote) },
             ],
-            // Você precisará adicionar o ID do usuário aqui
-            usuario: { id: "85" },
+          //Você precisará adicionar o ID do usuário aqui
         };
 
-        // Faz a chamada fetch
+        //Faz a chamada fetch
         fetch("http://localhost:8080/api/reservas", {
+
             method: "POST",
             headers: {
-                "Content-Type": "application/json",
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+              'Authorization': ` ${token}`
+
             },
             body: JSON.stringify(reservas),
         })

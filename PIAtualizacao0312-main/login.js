@@ -31,12 +31,14 @@ function login() {
             });
         }
         // Se a resposta for bem-sucedida, retorna o corpo da resposta como JSON
-        return res.text();
+        return res.json();
     })
     .then(function (data) {
         // Aqui você pode lidar com os dados da resposta bem-sucedida
-        console.log(data);
-        // Exibe mensagem de sucesso ou redireciona, se necessário
+        const token = data.token;
+
+        localStorage.setItem('token', token)
+      
         redirecionarPagina();
         exibirPopup("Bem-vindo à TicketWave!");
     })

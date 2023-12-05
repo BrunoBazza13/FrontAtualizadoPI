@@ -146,11 +146,4 @@ function redirecionarPagina() {
             return;
         }
 
-
-    /*if (response.ok) {
-           
-            
-        } else {
-            console.error("Erro ao criar usuário:", response.status);
-        }*/
     } 
